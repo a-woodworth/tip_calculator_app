@@ -1,44 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">  
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
+  <body>
+    <div class="container">
+      <header>
+        <div class="main-header">
+          <h1 class="sr-only">
+            Dine and Dash with Splitter - Quickly calculate each person's share of a bill
+          </h1>
+          <img src="images/logo.svg" alt="Splitter" aria-hidden="true">
+        </div>
+      </header>
+      <main>
+        <form class="form">
+          <div class="input-group">
+            <label for="bill">
+              Bill
+              <span class="form__error-message">Can't be zero</span>
+            </label>
+            <input 
+              class="form__input"
+              type="number"
+              id="bill"
+              name="bill"
+              min="0.00"
+              max="100000.00"
+              step="1.01"
+              value="0.00"
+              aria-invalid="false"
+              required>
+          </div>
+          <fieldset class="form__radio-group">
+            <legend class="form__radio-title">Select Tip %</legend>
+            <div class="radio-input__container">
+              <label for="five-percent">5%
+                <input 
+                  class="btn btn-radio" 
+                  type="radio"
+                  id="five-percent" 
+                  name="tip"
+                  value="0.05">
+              </label>
+              <label for="ten-percent">10%
+                <input 
+                  class="btn btn-radio" 
+                  type="radio"
+                  id="ten-percent" 
+                  name="tip"
+                  value="0.10">
+              </label>
+              <label for="fifteen-percent">15%
+                <input 
+                  class="btn btn-radio" 
+                  type="radio"
+                  id="fifteen-percent" 
+                  name="tip"
+                  value="0.15">
+              </label>
+              <label for="twenty-five-percent">25%
+                <input 
+                  class="btn btn-radio" 
+                  type="radio"
+                  id="twenty-five-percent" 
+                  name="tip"
+                  value="0.25">
+              </label>
+              <label for="fifty-percent">50%
+                <input 
+                  class="btn btn-radio" 
+                  type="radio"
+                  id="fifty-percent" 
+                  name="tip"
+                  value="0.50">
+              </label>
+              <div class="radio-input__custom">
+                <label for="custom-tip">
+                  Custom
+                </label>
+                <input 
+                  class="btn btn-radio__custom"
+                  type="number"
+                  id="custom-tip"
+                  name="custom-tip"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="">
+              </div>
+            </div>        
+          </fieldset>
+          <div class="input-group">
+            <label for="people">
+              Number of People
+              <span class="form__error-message">Can't be zero</span>
+            </label>
+            <input 
+              class="form__input"
+              type="number"
+              id="people"
+              name="people"
+              min="0"
+              max="100"
+              step="1"
+              aria-invalid="false"
+              required>
+          </div>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    Tip Amount
+    / person
 
-  Bill
+    Total
+    / person
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    Reset
+        </form>        
+      </main>
+    </div>
+    <footer>
+      <div class="main-footer">
+        <p class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://github.com/a-woodworth" target="_blank">a-woodworth</a>.</p>
+      </div>
+    </footer>
+  </body>
 </html>
