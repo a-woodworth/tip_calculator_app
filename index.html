@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">  
+    <!-- Google Fonts Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" 
+      rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link href="styles.css" rel="stylesheet">
+
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
 
-  <body>
-    <div class="container">
+  <body class="container">
+    <div class="header-main__container">
       <header>
         <div class="main-header">
           <h1 class="sr-only">
@@ -20,9 +27,9 @@
       <main>
         <form class="form">
           <div class="input-group">
-            <label for="bill">
+            <label for="bill" class="bill__total">
               Bill
-              <span class="form__error-message">Can't be zero</span>
+              <span class="form__error-message not-visible">Can't be zero</span>
             </label>
             <input 
               class="form__input"
@@ -32,7 +39,7 @@
               min="0.00"
               max="100000.00"
               step="1.01"
-              value=""
+              placeholder="0"
               aria-invalid="false"
               required>
           </div>
@@ -96,9 +103,9 @@
             </div>        
           </fieldset>
           <div class="input-group">
-            <label for="people">
+            <label for="people" class="number__people">
               Number of People
-              <span class="form__error-message">Can't be zero</span>
+              <span class="form__error-message not-visible">Can't be zero</span>
             </label>
             <input 
               class="form__input"
@@ -108,16 +115,17 @@
               min="0"
               max="100"
               step="1"
+              placeholder="0"
               aria-invalid="false"
               required>
           </div>
           <div class="input-group__container">
             <div class="input-group__total">
-              <label for="tip-amount">
+              <label for="tip-amount" class="tip__amount">
                 <span class="line-break">Tip Amount</span>/ person
               </label>
               <input
-                class="tip__amount" 
+                class="form__input" 
                 type="text"
                 id="tip-amount"
                 name="tip-amount"
@@ -125,18 +133,18 @@
                 readonly>
             </div>
             <div class="input-group__total">
-              <label for="total">
+              <label for="total" class="total__amount">
                 <span class="line-break">Total</span>/ person
               </label>
               <input
-                class="total__amount" 
+                class="form__input"
                 type="text"
                 id="total"
                 name="total"
                 value="$0.00"
                 readonly>
             </div>
-            <button type="reset" name="reset" class="btn btn-reset">
+            <button type="reset" name="reset" class="btn btn-reset" disabled>
               Reset
             </button>
           </div>

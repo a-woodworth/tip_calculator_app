@@ -1,0 +1,20 @@
+// ___________________________________________________________________
+// Button Styles
+// ___________________________________________________________________
+  
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.btn {
+  
+
+  &:hover {
+    // background-color: $hover-color;
+    transition: 0.25s ease-in;
+  }
+
+  &:focus {
+    outline: auto 2px Highlight; // for non-webkit browsers
+    outline: auto 5px -webkit-focus-ring-color; // for webkit browsers
+  }
+}

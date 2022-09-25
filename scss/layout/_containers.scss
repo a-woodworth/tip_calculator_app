@@ -1,0 +1,12 @@
+// ___________________________________________________________________
+// Containers
+// ___________________________________________________________________
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3rem;
+}

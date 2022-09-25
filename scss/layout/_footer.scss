@@ -1,0 +1,21 @@
+// ___________________________________________________________________
+// Footer Styles
+// ___________________________________________________________________
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.attribution {
+  // @include text($text-XS, $font-weight--regular, $text-color-secondary);
+  padding: 0.5rem 0;
+  text-align: center;
+  width: 100%;
+
+  a {
+    // color: $link-color;
+
+    &:hover {
+      // color: $hover-color;
+    }
+  }
+}

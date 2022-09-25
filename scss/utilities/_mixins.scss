@@ -1,0 +1,27 @@
+// ___________________________________________________________________
+// Mixins
+// ___________________________________________________________________
+
+@use 'sass:math';
+
+@function pxToRem($pxValue) {
+  @return math.div($pxValue, 16px) * 1rem;
+}
+
+// Rounded Border
+@mixin rounded($radius) {
+  border-radius: $radius;
+}
+
+// Size
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// Text
+@mixin text($size, $weight: null, $color: null) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

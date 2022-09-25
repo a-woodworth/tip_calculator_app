@@ -1,0 +1,46 @@
+// ___________________________________________________________________
+// Global Config
+// ___________________________________________________________________
+
+@use '../utilities/mixins' as *;
+
+//Font Stack
+$font-family--primary: 'Space Mono', monospace;
+
+// Font Weights
+$font-weight--bold: 700;
+
+// Primary Colors
+$strong-cyan: #{'hsl(172, 67%, 45%)'};
+$very-dark-cyan: #{'hsl(183, 100%, 15%)'};
+$dark-grayish-cyan: #{'hsl(186, 14%, 43%)'};
+$dark-gray: #{'hsl(180, 18%, 40%)'};
+$grayish-cyan: #{'hsl(184, 14%, 56%)'};
+$light-grayish-cyan: #{'hsl(185, 41%, 84%)'};
+$very-light-grayish-cyan: #{'hsl(189, 41%, 97%)'};
+$orange-red: #{'hsl(13, 70%, 61%)'};
+$white: #{'hsl(0, 0%, 100%)'};
+
+// Color Usage
+$bg-color-primary: $light-grayish-cyan;
+$bg-color-secondary: $very-dark-cyan;
+$bg-color-tertiary: $very-light-grayish-cyan;
+$bg-color-form: $white;
+$text-color-primary: $dark-grayish-cyan;
+$text-color-secondary: $dark-gray;
+$text-color-tertiary: $grayish-cyan;
+$accent-color: $strong-cyan;
+$error-color: $orange-red;
+
+// Text
+$text-XL: pxToRem(48px);
+$text-L: pxToRem(32px);
+$text-M: pxToRem(24px);
+$text-S: pxToRem(20px);
+$text-XS: pxToRem(16px);
+$text-XXS: pxToRem(13px);
+
+// Line Height
+$line-height__default: 1.48;
+
+// Breakpoints

@@ -1,0 +1,54 @@
+// ___________________________________________________________________
+// Base Styles
+// ___________________________________________________________________
+
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  border: none;
+}
+
+body {
+  background-color: $bg-color-primary;
+  font-family: $font-family--primary;
+  line-height: $line-height__default;
+  min-height: 100vh;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+
+  &:focus {
+    outline: auto 2px Highlight; // for non-webkit browsers
+    outline: auto 5px -webkit-focus-ring-color; // for webkit browsers
+  }
+}
+
+// Screen reader styles 
+.sr-only {
+  clip-path: inset(100%);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
