@@ -32,7 +32,7 @@
               min="0.00"
               max="100000.00"
               step="1.01"
-              value="0.00"
+              value=""
               aria-invalid="false"
               required>
           </div>
@@ -111,14 +111,35 @@
               aria-invalid="false"
               required>
           </div>
-
-    Tip Amount
-    / person
-
-    Total
-    / person
-
-    Reset
+          <div class="input-group__container">
+            <div class="input-group__total">
+              <label for="tip-amount">
+                <span class="line-break">Tip Amount</span>/ person
+              </label>
+              <input
+                class="tip__amount" 
+                type="text"
+                id="tip-amount"
+                name="tip-amount"
+                value="$0.00"
+                readonly>
+            </div>
+            <div class="input-group__total">
+              <label for="total">
+                <span class="line-break">Total</span>/ person
+              </label>
+              <input
+                class="total__amount" 
+                type="text"
+                id="total"
+                name="total"
+                value="$0.00"
+                readonly>
+            </div>
+            <button type="reset" name="reset" class="btn btn-reset">
+              Reset
+            </button>
+          </div>
         </form>        
       </main>
     </div>
