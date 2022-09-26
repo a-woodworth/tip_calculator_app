@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 6px;
 
   .form__error-message {
     align-self: flex-end;
@@ -45,4 +46,26 @@
 
 .bill__total {
   padding-top: 2rem;
+}
+
+// Remove spin arrows - Chrome, Safari, Edge, Opera
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Remove spin arrows - Firefox
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form__input {
+  @include text($text-M, $font-weight--bold, $bg-color-secondary);
+  @include rounded(5px);
+  background-color: $bg-color-tertiary;
+  border: 1px solid transparent;
+  padding: 6px 1rem 6px 0;
+  text-align: right;
+  width: 100%;
 }
