@@ -27,6 +27,10 @@ fieldset {
   border: none;
 }
 
+input{
+  font-family: $font-family--primary;
+}
+
 body {
   background-color: $bg-color-primary;
   font-family: $font-family--primary;
@@ -52,4 +56,18 @@ a {
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
+}
+
+.not-visible {
+  height: 0;
+  visibility: hidden;
+}
+
+.visibile {
+  visibility: visible;
+}
+
+.line-break::after {
+  content: '\a';
+  white-space: pre;
 }

@@ -6,16 +6,16 @@
 @use '../utilities/mixins' as *;
 
 .attribution {
-  // @include text($text-XS, $font-weight--regular, $text-color-secondary);
+  @include text($text-XXS, $font-weight--bold, $very-dark-cyan);
   padding: 0.5rem 0;
   text-align: center;
   width: 100%;
 
   a {
-    // color: $link-color;
+    color: $very-dark-cyan;
 
     &:hover {
-      // color: $hover-color;
+      color: $accent-color;
     }
   }
 }

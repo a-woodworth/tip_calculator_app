@@ -6,15 +6,27 @@
 @use '../utilities/mixins' as *;
 
 .btn {
-  
+  @include rounded(5px);
+  @include text($text-S, $font-weight--bold, $bg-color-secondary);
+  background-color: $accent-color;
+  border: none;
+  cursor: pointer;
+  font-family: $font-family--primary;
+  padding: 9px 0;
+  text-transform: uppercase;
 
   &:hover {
-    // background-color: $hover-color;
+    background-color: $btn-color-hover;
     transition: 0.25s ease-in;
   }
 
   &:focus {
     outline: auto 2px Highlight; // for non-webkit browsers
     outline: auto 5px -webkit-focus-ring-color; // for webkit browsers
+  }
+
+  &:disabled {
+    background-color: $btn-color-disabled;
+    color: $btn-color-disabled-text;
   }
 }

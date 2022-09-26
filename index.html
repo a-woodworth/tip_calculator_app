@@ -46,52 +46,49 @@
           <fieldset class="form__radio-group">
             <legend class="form__radio-title">Select Tip %</legend>
             <div class="radio-input__container">
-              <label for="five-percent">5%
+              <div class="radio-btn">
                 <input 
-                  class="btn btn-radio" 
                   type="radio"
                   id="five-percent" 
                   name="tip"
                   value="0.05">
-              </label>
-              <label for="ten-percent">10%
+                <label for="five-percent" class="percentage">5%</label>
+              </div>
+              <div class="radio-btn">
                 <input 
-                  class="btn btn-radio" 
                   type="radio"
                   id="ten-percent" 
                   name="tip"
                   value="0.10">
-              </label>
-              <label for="fifteen-percent">15%
+                <label for="ten-percent" class="percentage">10%</label>
+              </div>
+              <div class="radio-btn">
                 <input 
-                  class="btn btn-radio" 
                   type="radio"
                   id="fifteen-percent" 
                   name="tip"
                   value="0.15">
-              </label>
-              <label for="twenty-five-percent">25%
-                <input 
-                  class="btn btn-radio" 
+                <label for="fifteen-percent" class="percentage">15%</label>
+              </div>
+              <div class="radio-btn">
+                <input
                   type="radio"
                   id="twenty-five-percent" 
                   name="tip"
                   value="0.25">
-              </label>
-              <label for="fifty-percent">50%
-                <input 
-                  class="btn btn-radio" 
+                <label for="twenty-five-percent" class="percentage">25%</label>
+              </div>
+              <div class="radio-btn">
+                <input
                   type="radio"
                   id="fifty-percent" 
                   name="tip"
                   value="0.50">
-              </label>
-              <div class="radio-input__custom">
-                <label for="custom-tip">
-                  Custom
-                </label>
+                <label for="fifty-percent" class="percentage">50%</label>
+              </div>
+              <div class="radio-btn">
                 <input 
-                  class="btn btn-radio__custom"
+                  class="radio-input__custom"
                   type="number"
                   id="custom-tip"
                   name="custom-tip"
@@ -99,6 +96,7 @@
                   max="100"
                   step="1"
                   value="">
+                <label for="custom-tip" class="percentage custom">Custom</label>
               </div>
             </div>        
           </fieldset>
@@ -120,7 +118,7 @@
               required>
           </div>
           <div class="input-group__container">
-            <div class="input-group__total">
+            <div class="input-group__total-tip">
               <label for="tip-amount" class="tip__amount">
                 <span class="line-break">Tip Amount</span>/ person
               </label>
@@ -132,7 +130,7 @@
                 value="$0.00"
                 readonly>
             </div>
-            <div class="input-group__total">
+            <div class="input-group__total-amount">
               <label for="total" class="total__amount">
                 <span class="line-break">Total</span>/ person
               </label>
