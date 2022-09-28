@@ -58,6 +58,14 @@ a:focus {
   visibility: visible;
 }
 
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 .line-break::after {
   content: "\a";
   white-space: pre;
@@ -133,33 +141,62 @@ a:focus {
   color: hsl(183, 100%, 15%);
   border-radius: 5px;
   background-color: hsl(189, 41%, 97%);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 6px 1rem 6px 0;
   text-align: right;
   width: 100%;
 }
 
-.radio-input__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+.form__input:focus,
+.form__input:focus-within,
+.radio-input__custom:focus,
+.radio-input__custom:focus-within {
+  border: 2px solid hsl(172, 67%, 45%);
+  outline: transparent;
 }
 
-.input-group__container {
-  border-radius: 15px;
+.not-valid:focus,
+.not-valid:focus-within {
+  border: 2px solid hsl(13, 70%, 47%);
+  outline: transparent;
+}
+
+.radio-btn label {
+  min-height: 48px;
+}
+
+.radio-btn label {
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
   background-color: hsl(183, 100%, 15%);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
+  grid-template-columns: auto;
+  place-items: center;
+  position: relative;
 }
-.input-group__container .input-group__total-tip,
-.input-group__container .input-group__total-amount,
-.input-group__container button {
-  grid-column: 1/span 2;
+
+.radio-btn label.custom {
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(180, 18%, 40%);
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  position: absolute;
+}
+input[type=radio]:checked + label {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+}
+input[type=radio]:hover + label {
+  background-color: hsl(173, 61%, 77%);
+  color: hsl(183, 100%, 15%);
+  cursor: pointer;
+  transition: 0.25s ease-in;
 }
 
 .input-group__total-tip,
@@ -220,6 +257,29 @@ input[type=number] {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 3rem;
+}
+
+.input-group__container {
+  border-radius: 15px;
+  background-color: hsl(183, 100%, 15%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+.input-group__container .input-group__total-tip,
+.input-group__container .input-group__total-amount,
+.input-group__container button {
+  grid-column: 1/span 2;
+}
+
+.radio-input__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
 }
 
 .main-header {

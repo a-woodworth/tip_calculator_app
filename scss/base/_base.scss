@@ -67,6 +67,14 @@ a {
   visibility: visible;
 }
 
+.hidden {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 .line-break::after {
   content: '\a';
   white-space: pre;

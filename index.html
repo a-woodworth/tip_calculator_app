@@ -29,7 +29,11 @@
           <div class="input-group">
             <label for="bill" class="bill__total">
               Bill
-              <span class="form__error-message not-visible">Can't be zero</span>
+              <span class="form__error-message not-visible" 
+                id="bill-input-error"
+                aria-live="polite">
+                Can't be zero
+              </span>
             </label>
             <input 
               class="form__input"
@@ -87,8 +91,14 @@
                 <label for="fifty-percent" class="percentage">50%</label>
               </div>
               <div class="radio-btn">
+                <input
+                  type="radio"
+                  id="custom-tip" 
+                  name="tip"
+                  value="custom">
+                <label for="custom-tip" class="percentage custom">Custom</label>
                 <input 
-                  class="radio-input__custom"
+                  class="radio-input__custom hidden"
                   type="number"
                   id="custom-tip"
                   name="custom-tip"
@@ -96,14 +106,17 @@
                   max="100"
                   step="1"
                   value="">
-                <label for="custom-tip" class="percentage custom">Custom</label>
               </div>
             </div>        
           </fieldset>
           <div class="input-group">
             <label for="people" class="number__people">
               Number of People
-              <span class="form__error-message not-visible">Can't be zero</span>
+              <span class="form__error-message not-visible"
+                id="people-input-error"
+                 aria-live="polite">
+                Can't be zero
+              </span>
             </label>
             <input 
               class="form__input"

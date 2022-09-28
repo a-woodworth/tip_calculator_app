@@ -46,33 +46,61 @@
   @include text($text-M, $font-weight--bold, $bg-color-secondary);
   @include rounded(5px);
   background-color: $bg-color-tertiary;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 6px 1rem 6px 0;
   text-align: right;
   width: 100%;
 }
 
-.radio-input__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+.form__input:focus,
+.form__input:focus-within,
+.radio-input__custom:focus,
+.radio-input__custom:focus-within {
+  border: 2px solid $accent-color;
+  outline: transparent;
 }
 
-.input-group__container {
-  @include rounded(15px);
+.not-valid:focus,
+.not-valid:focus-within {
+  border: 2px solid $error-color;
+  outline: transparent;
+}
+
+.radio-btn label {
+  min-height: 48px;
+}
+
+.radio-btn label {
+  @include rounded(5px);
+  @include text($text-M, $font-weight--bold, $white);
   background-color: $bg-color-secondary;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
+  grid-template-columns: auto;
+  place-items: center;
+  position: relative;
+}
 
-  .input-group__total-tip,
-  .input-group__total-amount,
-  button {
-    grid-column: 1 / span 2;
+.radio-btn label.custom {
+  background-color: $bg-color-tertiary;
+  color: $text-color-secondary;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  position: absolute;
+
+  &:checked + label {
+    background-color: $accent-color;
+    color: $bg-color-secondary;
+  }
+
+  &:hover + label {
+    background-color: $btn-color-hover;
+    color: $bg-color-secondary;
+    cursor: pointer;
+    transition: 0.25s ease-in;
   }
 }
 
@@ -113,7 +141,6 @@
   text-align: right;
   width: 50%;
 }
-
 
 // Remove spin arrows - Chrome, Safari, Edge, Opera
 input[type="number"]::-webkit-inner-spin-button,
