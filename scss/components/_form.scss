@@ -9,16 +9,19 @@
   @include rounded(25px);
   background-color: $bg-color-form;
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  grid-row-gap: 2rem;
-  padding-inline: 1.5rem;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+.form__radio-group {
+  margin-bottom: 2rem;
 }
 
 .input-group,
 .form__radio-title {
   @include text($text-XS, $font-weight--bold, $text-color-primary);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .form__radio-title {
@@ -42,14 +45,18 @@
   padding-top: 2rem;
 }
 
-.form__input {
+.radio-btn {
+  flex: 1 1 45%;
+}
+
+.form__input,
+.radio-input__custom {
   @include text($text-M, $font-weight--bold, $bg-color-secondary);
   @include rounded(5px);
   background-color: $bg-color-tertiary;
   border: 2px solid transparent;
   padding: 6px 1rem 6px 0;
   text-align: right;
-  width: 100%;
 }
 
 .form__input:focus,
@@ -67,16 +74,13 @@
 }
 
 .radio-btn label {
-  min-height: 48px;
-}
-
-.radio-btn label {
   @include rounded(5px);
   @include text($text-M, $font-weight--bold, $white);
   background-color: $bg-color-secondary;
   display: grid;
   grid-template-columns: auto;
   place-items: center;
+  padding: 6px 0;
   position: relative;
 }
 
@@ -122,9 +126,9 @@ input[type="radio"] {
 
 .tip__amount,
 .total__amount {
-   @include text($text-XXS, $font-weight--bold, $text-color-tertiary);
-   flex-basis: 40%;
-   letter-spacing: -0.67px;
+  @include text($text-XXS, $font-weight--bold, $text-color-tertiary);
+  flex-basis: 40%;
+  letter-spacing: -0.67px;
 }
 
 .tip__amount span,

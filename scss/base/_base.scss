@@ -29,6 +29,11 @@ fieldset {
 
 input{
   font-family: $font-family--primary;
+  display: block;
+}
+
+label {
+  display: block;
 }
 
 body {

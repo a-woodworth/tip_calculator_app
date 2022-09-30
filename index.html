@@ -14,7 +14,7 @@
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
 
-  <body class="container">
+  <body>
     <div class="header-main__container">
       <header>
         <div class="main-header">
@@ -36,7 +36,7 @@
               </span>
             </label>
             <input 
-              class="form__input"
+              class="form__input full-column"
               type="number"
               id="bill"
               name="bill"
@@ -96,16 +96,18 @@
                   id="custom-tip" 
                   name="tip"
                   value="custom">
-                <label for="custom-tip" class="percentage custom">Custom</label>
-                <input 
-                  class="radio-input__custom hidden"
-                  type="number"
-                  id="custom-tip"
-                  name="custom-tip"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value="">
+                <label for="custom-tip" class="percentage custom">
+                  Custom
+                  <input 
+                    class="radio-input__custom hidden"
+                    type="number"
+                    id="custom-tip-input"
+                    name="custom-tip"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="">
+                </label>
               </div>
             </div>        
           </fieldset>
@@ -119,7 +121,7 @@
               </span>
             </label>
             <input 
-              class="form__input"
+              class="form__input full-column"
               type="number"
               id="people"
               name="people"

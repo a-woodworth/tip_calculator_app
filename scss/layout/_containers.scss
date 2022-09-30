@@ -5,32 +5,15 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 3rem;
-}
-
 .input-group__container {
   @include rounded(15px);
   background-color: $bg-color-secondary;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  margin-bottom: 2rem;
   padding: 1.5rem;
-
-  .input-group__total-tip,
-  .input-group__total-amount,
-  button {
-    grid-column: 1 / span 2;
-  }
 }
 
 .radio-input__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
