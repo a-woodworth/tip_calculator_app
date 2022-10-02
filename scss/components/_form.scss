@@ -12,10 +12,6 @@
   padding: 0 1.5rem 2rem 1.5rem;
 }
 
-.form__radio-group {
-  margin-bottom: 2rem;
-}
-
 .input-group,
 .form__radio-title {
   @include text($text-XS, $font-weight--bold, $text-color-primary);
@@ -45,6 +41,20 @@
   padding-top: 2rem;
 }
 
+#bill,
+#people {
+  background-repeat: no-repeat;
+  background-position: 1rem;
+}
+
+#bill {
+  background-image: url(images/icon-dollar.svg);
+}
+
+#people {
+  background-image: url(images/icon-person.svg);
+}
+
 .radio-btn {
   flex: 1 1 45%;
 }
@@ -55,7 +65,8 @@
   @include rounded(5px);
   background-color: $bg-color-tertiary;
   border: 2px solid transparent;
-  padding: 6px 1rem 6px 0;
+  cursor: pointer;
+  padding: 4px 1rem 4px 0;
   text-align: right;
 }
 
@@ -86,18 +97,52 @@
 
 .radio-btn label.custom {
   background-color: $bg-color-tertiary;
-  color: $text-color-secondary;
+}
+
+.radio-input__custom {
+  display: inline-block;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &:hover {
+    background-color: $btn-color-hover;
+    cursor: pointer;
+    transition: 0.25s ease-in;
+  }
+
+  &::placeholder {
+    color: $text-color-secondary;
+    opacity: 1;
+  }
+
+  &:hover::placeholder {
+    color: $bg-color-secondary;
+  }
+
+  &:hover:focus {
+    background-color: $bg-color-tertiary;
+  }
 }
 
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
+  background-color: $white;
   margin: 0;
-  position: absolute;
+  outline-style: none;
 
   &:checked + label {
     background-color: $accent-color;
     color: $bg-color-secondary;
+  }
+
+  &:focus + label,
+  &:focus-within + label {
+    outline: auto 2px Highlight;
+    outline: auto 5px -webkit-focus-ring-color; 
   }
 
   &:hover + label {

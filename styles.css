@@ -63,8 +63,8 @@ a:focus {
   visibility: visible;
 }
 
-.hidden {
-  display: none;
+.hide-label {
+  z-index: unset;
 }
 
 .active {
@@ -109,10 +109,6 @@ a:focus {
   padding: 0 1.5rem 2rem 1.5rem;
 }
 
-.form__radio-group {
-  margin-bottom: 2rem;
-}
-
 .input-group,
 .form__radio-title {
   font-size: 1rem;
@@ -144,6 +140,20 @@ a:focus {
   padding-top: 2rem;
 }
 
+#bill,
+#people {
+  background-repeat: no-repeat;
+  background-position: 1rem;
+}
+
+#bill {
+  background-image: url(images/icon-dollar.svg);
+}
+
+#people {
+  background-image: url(images/icon-person.svg);
+}
+
 .radio-btn {
   flex: 1 1 45%;
 }
@@ -156,7 +166,8 @@ a:focus {
   border-radius: 5px;
   background-color: hsl(189, 41%, 97%);
   border: 2px solid transparent;
-  padding: 6px 1rem 6px 0;
+  cursor: pointer;
+  padding: 4px 1rem 4px 0;
   text-align: right;
 }
 
@@ -189,18 +200,46 @@ a:focus {
 
 .radio-btn label.custom {
   background-color: hsl(189, 41%, 97%);
+}
+
+.radio-input__custom {
+  display: inline-block;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.radio-input__custom:hover {
+  background-color: hsl(173, 61%, 77%);
+  cursor: pointer;
+  transition: 0.25s ease-in;
+}
+.radio-input__custom::placeholder {
   color: hsl(180, 18%, 40%);
+  opacity: 1;
+}
+.radio-input__custom:hover::placeholder {
+  color: hsl(183, 100%, 15%);
+}
+.radio-input__custom:hover:focus {
+  background-color: hsl(189, 41%, 97%);
 }
 
 input[type=radio] {
   -webkit-appearance: none;
   appearance: none;
+  background-color: hsl(0, 0%, 100%);
   margin: 0;
-  position: absolute;
+  outline-style: none;
 }
 input[type=radio]:checked + label {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
+}
+input[type=radio]:focus + label, input[type=radio]:focus-within + label {
+  outline: auto 2px Highlight;
+  outline: auto 5px -webkit-focus-ring-color;
 }
 input[type=radio]:hover + label {
   background-color: hsl(173, 61%, 77%);
@@ -274,6 +313,11 @@ input[type=number] {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.custom-tip__container {
+  position: relative;
 }
 
 .main-header {

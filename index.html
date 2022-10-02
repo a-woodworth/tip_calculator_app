@@ -36,7 +36,7 @@
               </span>
             </label>
             <input 
-              class="form__input full-column"
+              class="form__input"
               type="number"
               id="bill"
               name="bill"
@@ -91,23 +91,19 @@
                 <label for="fifty-percent" class="percentage">50%</label>
               </div>
               <div class="radio-btn">
-                <input
-                  type="radio"
-                  id="custom-tip" 
-                  name="tip"
-                  value="custom">
-                <label for="custom-tip" class="percentage custom">
-                  Custom
+                <div class="custom-tip__container">
                   <input 
-                    class="radio-input__custom hidden"
+                    class="radio-input__custom"
                     type="number"
-                    id="custom-tip-input"
+                    id="custom-tip"
                     name="custom-tip"
                     min="0"
                     max="100"
                     step="1"
-                    value="">
-                </label>
+                    value=""
+                    placeholder="Custom">
+                  <label for="custom-tip" class="percentage custom"></label>
+                </div>
               </div>
             </div>        
           </fieldset>
@@ -121,7 +117,7 @@
               </span>
             </label>
             <input 
-              class="form__input full-column"
+              class="form__input"
               type="number"
               id="people"
               name="people"

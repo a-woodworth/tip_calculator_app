@@ -72,8 +72,8 @@ a {
   visibility: visible;
 }
 
-.hidden {
-  display: none;
+.hide-label {
+  z-index: unset;
 }
 
 .active {
