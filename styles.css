@@ -63,14 +63,6 @@ a:focus {
   visibility: visible;
 }
 
-.hide-label {
-  z-index: unset;
-}
-
-.active {
-  display: block;
-}
-
 .line-break::after {
   content: "\a";
   white-space: pre;
