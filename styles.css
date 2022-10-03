@@ -98,17 +98,40 @@ a:focus {
   border-radius: 25px;
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
+  max-width: 57.5rem;
   padding: 0 1.5rem 2rem 1.5rem;
 }
+@media (min-width: 57.5rem) {
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 3rem;
+    padding: 2rem 2rem 2rem 3rem;
+  }
+}
 
-.input-group,
-.form__radio-title {
+.input-group__bill,
+.form__radio-title,
+.input-group__people {
   font-size: 1rem;
   font-weight: 700;
   color: hsl(186, 14%, 43%);
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 57.5rem) {
+  .input-group__bill {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (min-width: 57.5rem) {
+  .input-group__people {
+    margin-bottom: 1rem;
+  }
 }
 
 .form__radio-title {
@@ -131,6 +154,11 @@ a:focus {
 .bill__total {
   padding-top: 2rem;
 }
+@media (min-width: 57.5rem) {
+  .bill__total {
+    padding-top: 0.8125rem;
+  }
+}
 
 #bill,
 #people {
@@ -149,6 +177,11 @@ a:focus {
 .radio-btn {
   flex: 1 1 45%;
 }
+@media (min-width: 57.5rem) {
+  .radio-btn {
+    flex: 1 1 30%;
+  }
+}
 
 .form__input,
 .radio-input__custom {
@@ -166,7 +199,9 @@ a:focus {
 .form__input:focus,
 .form__input:focus-within,
 .radio-input__custom:focus,
-.radio-input__custom:focus-within {
+.radio-input__custom:focus-within,
+.form__input:hover,
+.radio-input__custom:hover {
   border: 2px solid hsl(172, 67%, 45%);
   outline: transparent;
 }
@@ -203,7 +238,6 @@ a:focus {
   z-index: 1;
 }
 .radio-input__custom:hover {
-  background-color: hsl(173, 61%, 77%);
   cursor: pointer;
   transition: 0.25s ease-in;
 }
@@ -255,6 +289,11 @@ input[type=radio]:hover + label {
 .input-group__total-amount {
   margin-bottom: 32px;
 }
+@media (min-width: 57.5rem) {
+  .input-group__total-amount {
+    margin-bottom: 7.625rem;
+  }
+}
 
 .tip__amount,
 .total__amount {
@@ -283,6 +322,12 @@ input[type=radio]:hover + label {
   text-align: right;
   width: 50%;
 }
+@media (min-width: 57.5rem) {
+  .form__input-total {
+    font-size: 3rem;
+    letter-spacing: -1px;
+  }
+}
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -294,10 +339,24 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+@media (min-width: 57.5rem) {
+  .header-main__container {
+    display: grid;
+    place-items: center;
+  }
+}
+
 .input-group__container {
   border-radius: 15px;
   background-color: hsl(183, 100%, 15%);
   padding: 1.5rem;
+}
+@media (min-width: 57.5rem) {
+  .input-group__container {
+    grid-column: 2;
+    grid-row: 1/span 4;
+    padding: 2.5rem;
+  }
 }
 
 .radio-input__container {
@@ -306,6 +365,11 @@ input[type=number] {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
+}
+@media (min-width: 57.5rem) {
+  .radio-input__container {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .custom-tip__container {

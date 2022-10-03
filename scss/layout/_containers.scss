@@ -5,10 +5,23 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
+.header-main__container {
+  @media #{$brkpoint-md} {
+    display: grid;
+    place-items: center;
+  }
+}
+
 .input-group__container {
   @include rounded(15px);
   background-color: $bg-color-secondary;
   padding: 1.5rem;
+
+  @media #{$brkpoint-md} {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    padding: 2.5rem;
+  }
 }
 
 .radio-input__container {
@@ -17,6 +30,10 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
+
+  @media #{$brkpoint-md} {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .custom-tip__container {
