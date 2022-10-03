@@ -354,7 +354,7 @@ input[type=number] {
 @media (min-width: 57.5rem) {
   .input-group__container {
     grid-column: 2;
-    grid-row: 1/span 4;
+    grid-row: 1/4;
     padding: 2.5rem;
   }
 }
