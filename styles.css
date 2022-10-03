@@ -383,6 +383,12 @@ input[type=number] {
   margin-bottom: 2.5rem;
   padding-top: 3.125rem;
 }
+@media (min-width: 57.5rem) {
+  .main-header {
+    margin-bottom: 2.5rem;
+    padding-top: 5.5rem;
+  }
+}
 
 .attribution {
   font-size: 0.8125rem;
