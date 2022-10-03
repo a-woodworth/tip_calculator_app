@@ -10,7 +10,9 @@
   background-color: $bg-color-form;
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
   max-width: 57.5rem;
+  min-width: 17.5rem;
   padding: 0 1.5rem 2rem 1.5rem;
+  width: 100%;
 
   @media #{$brkpoint-md} {
     display: grid;
@@ -52,6 +54,10 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 6px;
+
+  span:first-child {
+    align-self: flex-start;
+  }
 
   .form__error-message {
     align-self: flex-end;
