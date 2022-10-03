@@ -38,6 +38,10 @@ label {
 
 body {
   background-color: $bg-color-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: $font-family--primary;
   line-height: $line-height__default;
   min-height: 100vh;

@@ -5,13 +5,6 @@
 @use '../utilities/variables' as *;
 @use '../utilities/mixins' as *;
 
-.header-main__container {
-  @media #{$brkpoint-md} {
-    display: grid;
-    place-items: center;
-  }
-}
-
 .input-group__container {
   @include rounded(15px);
   background-color: $bg-color-secondary;
