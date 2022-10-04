@@ -24,7 +24,7 @@
       </div>
     </header>
     <main>
-      <form class="form">
+      <form class="form" id="calculator">
         <div class="input-group__bill">
           <label for="bill" class="bill__total">
             <span>Bill</span>
@@ -93,8 +93,8 @@
                 <input 
                   class="radio-input__custom"
                   type="number"
-                  id="custom-tip"
-                  name="custom-tip"
+                  id="customTip"
+                  name="customTip"
                   min="0"
                   max="100"
                   step="1"
@@ -133,8 +133,8 @@
             <input
               class="form__input-total" 
               type="text"
-              id="tip-amount"
-              name="tip-amount"
+              id="tipAmount"
+              name="tipAmount"
               value="$0.00"
               readonly>
           </div>
@@ -161,5 +161,6 @@
         <p class="attribution">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://github.com/a-woodworth" target="_blank">a-woodworth</a>.</p>
       </div>
     </footer>
+    <script src="app.js"></script>
   </body>
 </html>
