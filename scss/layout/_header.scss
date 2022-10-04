@@ -6,12 +6,8 @@
 @use '../utilities/mixins' as *;
 
 .main-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 2.5rem;
   padding-top: 3.125rem;
-  width: 100%;
 
   @media #{$brkpoint-md} {
     margin-bottom: 5rem;

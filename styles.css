@@ -111,10 +111,9 @@ a:focus {
   border-radius: 25px;
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
+  margin-inline: auto;
   max-width: 57.5rem;
-  min-width: 17.5rem;
   padding: 0 1.5rem 2rem 1.5rem;
-  width: 100%;
 }
 @media (min-width: 57.5rem) {
   .form {
@@ -137,6 +136,10 @@ a:focus {
   margin-bottom: 2rem;
 }
 
+.form__radio-title {
+  margin-bottom: 1rem;
+}
+
 @media (min-width: 57.5rem) {
   .input-group__bill {
     margin-bottom: 2.5rem;
@@ -147,10 +150,6 @@ a:focus {
   .input-group__people {
     margin-bottom: 1rem;
   }
-}
-
-.form__radio-title {
-  margin-bottom: 1rem;
 }
 
 .bill__total,
@@ -168,6 +167,12 @@ a:focus {
 .number__people .form__error-message {
   align-self: flex-end;
   color: hsl(13, 70%, 47%);
+}
+
+.not-valid:focus,
+.not-valid:focus-within {
+  border: 2px solid hsl(13, 70%, 47%);
+  outline: transparent;
 }
 
 .bill__total {
@@ -222,12 +227,6 @@ a:focus {
 .form__input:hover,
 .radio-input__custom:hover {
   border: 2px solid hsl(172, 67%, 45%);
-  outline: transparent;
-}
-
-.not-valid:focus,
-.not-valid:focus-within {
-  border: 2px solid hsl(13, 70%, 47%);
   outline: transparent;
 }
 
@@ -293,6 +292,17 @@ input[type=radio]:hover + label {
   transition: 0.25s ease-in;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
 .input-group__total-tip,
 .input-group__total-amount {
   display: flex;
@@ -348,16 +358,6 @@ input[type=radio]:hover + label {
   }
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 .input-group__container {
   border-radius: 15px;
   background-color: hsl(183, 100%, 15%);
@@ -389,12 +389,8 @@ input[type=number] {
 }
 
 .main-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 2.5rem;
   padding-top: 3.125rem;
-  width: 100%;
 }
 @media (min-width: 57.5rem) {
   .main-header {
@@ -403,13 +399,16 @@ input[type=number] {
   }
 }
 
+main {
+  width: 100%;
+}
+
 .attribution {
   font-size: 0.8125rem;
   font-weight: 700;
   color: hsl(183, 100%, 15%);
   padding: 0.5rem 0;
   text-align: center;
-  width: 100%;
 }
 .attribution a {
   color: hsl(183, 100%, 15%);

@@ -9,10 +9,9 @@
   @include rounded(25px);
   background-color: $bg-color-form;
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
+  margin-inline: auto;
   max-width: 57.5rem;
-  min-width: 17.5rem;
   padding: 0 1.5rem 2rem 1.5rem;
-  width: 100%;
 
   @media #{$brkpoint-md} {
     display: grid;
@@ -23,6 +22,7 @@
   }
 }
 
+// Label Font Styles
 .input-group__bill,
 .form__radio-title,
 .input-group__people {
@@ -30,6 +30,10 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+}
+
+.form__radio-title {
+  margin-bottom: 1rem;
 }
 
 .input-group__bill {
@@ -44,10 +48,6 @@
   }
 }
 
-.form__radio-title {
-  margin-bottom: 1rem;
-}
-
 .bill__total,
 .number__people {
   display: flex;
@@ -58,11 +58,18 @@
   span:first-child {
     align-self: flex-start;
   }
-
+// Error Message Layout (span:last-child)
   .form__error-message {
     align-self: flex-end;
     color: $error-color;
   }
+}
+
+// Error Message Focus
+.not-valid:focus,
+.not-valid:focus-within {
+  border: 2px solid $error-color;
+  outline: transparent;
 }
 
 .bill__total {
@@ -73,6 +80,7 @@
   }
 }
 
+// Input Field Image Styles
 #bill,
 #people {
   background-repeat: no-repeat;
@@ -87,6 +95,7 @@
   background-image: url(images/icon-person.svg);
 }
 
+// Fieldset - Radio Buttons, Custom Input, Focus Styles 
 .radio-btn {
   flex: 1 1 45%;
 
@@ -113,12 +122,6 @@
 .form__input:hover,
 .radio-input__custom:hover {
   border: 2px solid $accent-color;
-  outline: transparent;
-}
-
-.not-valid:focus,
-.not-valid:focus-within {
-  border: 2px solid $error-color;
   outline: transparent;
 }
 
@@ -190,6 +193,20 @@ input[type="radio"] {
   }
 }
 
+// Remove spin arrows - Chrome, Safari, Edge, Opera
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Remove spin arrows - Firefox
+input[type="number"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+// Tip Amount and Total Styles
 .input-group__total-tip,
 .input-group__total-amount {
   display: flex;
@@ -235,16 +252,4 @@ input[type="radio"] {
     font-size: $text-XL;
     letter-spacing: -1px;
   }
-}
-
-// Remove spin arrows - Chrome, Safari, Edge, Opera
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-// Remove spin arrows - Firefox
-input[type="number"] {
-  -moz-appearance: textfield;
 }
