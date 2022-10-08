@@ -169,12 +169,6 @@ a:focus {
   color: hsl(13, 70%, 47%);
 }
 
-.not-valid:focus,
-.not-valid:focus-within {
-  border: 2px solid hsl(13, 70%, 47%);
-  outline: transparent;
-}
-
 .bill__total {
   padding-top: 2rem;
 }
@@ -227,6 +221,14 @@ a:focus {
 .form__input:hover,
 .radio-input__custom:hover {
   border: 2px solid hsl(172, 67%, 45%);
+  outline: transparent;
+}
+
+.form__input.invalid,
+.form__input.invalid:focus,
+.form__input.invalid:focus-within,
+.form__input.invalid:hover {
+  border: 2px solid hsl(13, 70%, 47%);
   outline: transparent;
 }
 

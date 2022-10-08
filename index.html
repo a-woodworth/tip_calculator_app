@@ -24,8 +24,8 @@
       </div>
     </header>
     <main>
-      <form class="form" id="calculator">
-        <div class="input-group__bill">
+      <form class="form" id="calculator" novalidate autocomplete="off">
+        <div class="input-group__bill" role="group">
           <label for="bill" class="bill__total">
             <span>Bill</span>
             <span class="form__error-message not-visible" 
@@ -35,14 +35,17 @@
           </label>
           <input 
             class="form__input"
-            type="number"
+            type="text"
+            inputmode="numeric" 
             id="bill"
             name="bill"
-            min="0.00"
-            max="100000.00"
-            step="0.01"
+            maxlength="8"
+            minlength="1"
+            pattern="\d+(?:\.\d{1,2})" 
             placeholder="0"
+            spellcheck="false" 
             aria-invalid="false"
+            aria-label="Enter bill total"
             value=""
             required>
         </div>
@@ -101,8 +104,8 @@
                   step="1"
                   value=""
                   placeholder="Custom"
-                  aria-label="Enter custom tip">
-                <label for="custom-tip" class="custom sr-only">Custom</label>
+                  aria-label="Enter custom percentage">
+                <label for="customTip" class="custom">Custom</label>
               </div>
             </div>
           </div>        
@@ -125,11 +128,12 @@
             step="1" 
             placeholder="0"
             aria-invalid="false"
+            aria-label=""
             required>
         </div>
         <div class="input-group__container">
           <div class="input-group__total-tip">
-            <label for="tip-amount" class="tip__amount">
+            <label for="tipAmount" class="tip__amount">
               <span class="line-break">Tip Amount</span>/ person
             </label>
             <input

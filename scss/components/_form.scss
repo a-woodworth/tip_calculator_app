@@ -65,13 +65,6 @@
   }
 }
 
-// Error Message Focus
-.not-valid:focus,
-.not-valid:focus-within {
-  border: 2px solid $error-color;
-  outline: transparent;
-}
-
 .bill__total {
   padding-top: 2rem;
 
@@ -125,6 +118,15 @@
   outline: transparent;
 }
 
+// Error for input field
+.form__input.invalid,
+.form__input.invalid:focus,
+.form__input.invalid:focus-within,
+.form__input.invalid:hover {
+  border: 2px solid $error-color;
+  outline: transparent;
+}
+
 .radio-btn label {
   @include rounded(5px);
   @include text($text-M, $font-weight--bold, $white);
@@ -165,7 +167,7 @@
   &:hover:focus {
     background-color: $bg-color-tertiary;
   }
-}
+} 
 
 input[type="radio"] {
   -webkit-appearance: none;
