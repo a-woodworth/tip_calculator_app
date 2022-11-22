@@ -105,6 +105,7 @@ a:focus {
 .btn:disabled {
   background-color: hsl(183, 79%, 24%);
   color: rgba(0, 71, 75, 0.35);
+  pointer-events: none;
 }
 
 .form {

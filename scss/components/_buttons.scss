@@ -29,5 +29,6 @@
   &:disabled {
     background-color: $btn-color-disabled;
     color: $btn-color-disabled-text;
+    pointer-events: none;
   }
 }
