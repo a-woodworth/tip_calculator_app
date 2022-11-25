@@ -148,13 +148,14 @@
 
 .radio-btn label.custom {
   background-color: $bg-color-tertiary;
+  padding: 0;
 }
 
 .radio-input__custom {
   display: inline-block;
   height: auto;
   margin: 0;
-  padding: 6px 01rem 6px 0;
+  padding: 4px 1rem 4px 0;
   position: unset;
   width: 100%;
 
