@@ -263,6 +263,8 @@ a:focus {
   display: inline-block;
   height: auto;
   margin: 0;
+  padding: 6px 1rem 6px 0;
+  position: unset;
   width: 100%;
 }
 .radio-input__custom:hover {
