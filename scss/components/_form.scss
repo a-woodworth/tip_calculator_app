@@ -88,7 +88,11 @@
   background-image: url(images/icon-person.svg);
 }
 
-// Fieldset - Radio Buttons, Custom Input, Focus Styles 
+// Fieldset - Radio Buttons, Custom Input, Focus Styles
+.form__radio-group {
+  margin-bottom: 2rem;
+}
+
 .radio-btn {
   flex: 1 1 45%;
 
@@ -140,6 +144,7 @@
 
 .radio-btn label.custom {
   background-color: $bg-color-tertiary;
+  padding: 0;
 }
 
 .radio-input__custom {
