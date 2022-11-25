@@ -91,6 +91,10 @@
 // Fieldset - Radio Buttons, Custom Input, Focus Styles
 .form__radio-group {
   margin-bottom: 2rem;
+
+  @media #{$brkpoint-md} {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .radio-btn {
@@ -144,16 +148,13 @@
 
 .radio-btn label.custom {
   background-color: $bg-color-tertiary;
-  padding: 0;
 }
 
 .radio-input__custom {
   display: inline-block;
-  position: absolute;
+  height: auto;
   margin: 0;
-  top: 0;
   width: 100%;
-  z-index: 1;
 
   &:hover {
     cursor: pointer;

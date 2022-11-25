@@ -22,13 +22,4 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
-
-  @media #{$brkpoint-md} {
-    margin-bottom: 2.5rem;
-  }
-}
-
-.custom-tip__container {
-  position: relative;
 }
