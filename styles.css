@@ -258,14 +258,15 @@ a:focus {
 .radio-btn label.custom {
   background-color: hsl(189, 41%, 97%);
   padding: 0;
+  position: absolute;
 }
 
 .radio-input__custom {
-  display: inline-block;
-  height: auto;
+  display: grid;
+  grid-template-columns: auto;
   margin: 0;
-  padding: 4px 1rem 4px 0;
-  position: unset;
+  place-items: center;
+  position: relative;
   width: 100%;
 }
 .radio-input__custom:hover {
