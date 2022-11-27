@@ -56,7 +56,7 @@ a:focus {
 
 .sr-only {
   border: 0;
-  clip-path: inset(100%);
+  clip-path: inset(50%);
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   margin: -1px;
@@ -257,7 +257,6 @@ a:focus {
 
 .radio-btn label.custom {
   background-color: hsl(0, 0%, 100%);
-  margin: 0;
   padding: 0;
 }
 
