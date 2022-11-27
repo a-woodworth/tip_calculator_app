@@ -256,17 +256,12 @@ a:focus {
 }
 
 .radio-btn label.custom {
-  background-color: hsl(189, 41%, 97%);
+  background-color: hsl(0, 0%, 100%);
+  margin: 0;
   padding: 0;
-  position: absolute;
 }
 
 .radio-input__custom {
-  display: grid;
-  grid-template-columns: auto;
-  margin: 0;
-  place-items: center;
-  position: relative;
   width: 100%;
 }
 .radio-input__custom:hover {
