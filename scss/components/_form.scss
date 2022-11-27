@@ -146,13 +146,16 @@
   position: relative;
 }
 
-.radio-btn label.custom {
-  background-color: $white;
-  // margin: 0;
+.radio-btn:last-child {
+  display: block;
+}
+
+.radio-btn:last-child label {
   padding: 0;
 }
 
 .radio-input__custom {
+  margin: 0;
   width: 100%;
 
   &:hover {

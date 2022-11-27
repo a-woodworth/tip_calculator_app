@@ -255,12 +255,16 @@ a:focus {
   position: relative;
 }
 
-.radio-btn label.custom {
-  background-color: hsl(0, 0%, 100%);
+.radio-btn:last-child {
+  display: block;
+}
+
+.radio-btn:last-child label {
   padding: 0;
 }
 
 .radio-input__custom {
+  margin: 0;
   width: 100%;
 }
 .radio-input__custom:hover {
