@@ -103,6 +103,27 @@
   @media #{$brkpoint-md} {
     flex: 1 1 30%;
   }
+
+  &:last-child {
+    position: relative;
+  }
+
+  &:last-child label {
+    background-color: $bg-color-tertiary;
+    color: $text-color-secondary;
+    z-index: 0;
+  }
+
+  label {
+    @include rounded(5px);
+    @include text($text-M, $font-weight--bold, $white);
+    background-color: $bg-color-secondary;
+    display: grid;
+    grid-template-columns: auto;
+    place-items: center;
+    padding: 6px 0;
+    position: relative;
+  }
 }
 
 .form__input,
@@ -135,28 +156,12 @@
   outline: transparent;
 }
 
-.radio-btn label {
-  @include rounded(5px);
-  @include text($text-M, $font-weight--bold, $white);
-  background-color: $bg-color-secondary;
-  display: grid;
-  grid-template-columns: auto;
-  place-items: center;
-  padding: 6px 0;
-  position: relative;
-}
-
-.radio-btn:last-child {
-  display: block;
-}
-
-.radio-btn:last-child label {
-  padding: 0;
-}
-
 .radio-input__custom {
   margin: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
+  z-index: 1;
 
   &:hover {
     cursor: pointer;
@@ -164,16 +169,8 @@
   }
 
   &::placeholder {
-    color: $text-color-secondary;
-    opacity: 1;
-  }
-
-  &:hover::placeholder {
     color: $bg-color-secondary;
-  }
-
-  &:hover:focus {
-    background-color: $bg-color-tertiary;
+    opacity: 1;
   }
 } 
 

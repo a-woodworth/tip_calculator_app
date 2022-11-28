@@ -91,8 +91,14 @@
               <label for="fifty-percent">50%</label>
             </div>
             <div class="radio-btn">
+              <input
+                type="radio"
+                id="customPercent" 
+                name="tip"
+                value="">
+              <label for="customPercent">Custom</label>
               <input 
-                class="radio-input__custom"
+                class="radio-input__custom not-visible"
                 type="number"
                 id="customTip"
                 name="customTip"
@@ -100,9 +106,8 @@
                 max="100"
                 step="1"
                 value=""
-                placeholder="Custom"
+                placeholder="0"
                 aria-label="Enter custom tip percentage">
-              <label for="customTip" class="sr-only">Custom</label>
             </div>
           </div>        
         </fieldset>

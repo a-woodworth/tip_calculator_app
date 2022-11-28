@@ -210,6 +210,26 @@ a:focus {
     flex: 1 1 30%;
   }
 }
+.radio-btn:last-child {
+  position: relative;
+}
+.radio-btn:last-child label {
+  background-color: hsl(189, 41%, 97%);
+  color: hsl(180, 18%, 40%);
+  z-index: 0;
+}
+.radio-btn label {
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(183, 100%, 15%);
+  display: grid;
+  grid-template-columns: auto;
+  place-items: center;
+  padding: 6px 0;
+  position: relative;
+}
 
 .form__input,
 .radio-input__custom {
@@ -242,44 +262,20 @@ a:focus {
   outline: transparent;
 }
 
-.radio-btn label {
-  border-radius: 5px;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(183, 100%, 15%);
-  display: grid;
-  grid-template-columns: auto;
-  place-items: center;
-  padding: 6px 0;
-  position: relative;
-}
-
-.radio-btn:last-child {
-  display: block;
-}
-
-.radio-btn:last-child label {
-  padding: 0;
-}
-
 .radio-input__custom {
   margin: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
+  z-index: 1;
 }
 .radio-input__custom:hover {
   cursor: pointer;
   transition: 0.25s ease-in;
 }
 .radio-input__custom::placeholder {
-  color: hsl(180, 18%, 40%);
-  opacity: 1;
-}
-.radio-input__custom:hover::placeholder {
   color: hsl(183, 100%, 15%);
-}
-.radio-input__custom:hover:focus {
-  background-color: hsl(189, 41%, 97%);
+  opacity: 1;
 }
 
 input[type=radio] {

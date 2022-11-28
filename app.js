@@ -15,9 +15,18 @@ function activateResetBtn() {
   resetBtn.removeAttribute('disabled');
 }
 
-function uncheckRadioBtn() {
-  const activeRadioBtn = document.querySelector('input[type="radio"]:checked');
-  activeRadioBtn.checked = false;
+function showCustomTipInput() {
+// If custom tip radio button selected, show input field for custom % value
+  customTip.classList.remove('not-visible');
+  customTip.classList.add('visible');
+  customTip.focus();
+}
+
+function resetCustomTipInput() {
+// Return custom tip radio button to default settings  
+  customTip.classList.remove('visible');
+  customTip.classList.add('not-visible');
+  customTip.value = '';
 }
 
 function numberToCurrency(amount) {
@@ -81,22 +90,27 @@ radioBtnTips.forEach(radioBtn => {
   radioBtn.addEventListener('change', () => {
     activateResetBtn();
     tipPercentage = radioBtn.value;
+
+    // If custom tip selected, show input for custom % value
+    if (tipPercentage === '') { 
+      showCustomTipInput();
+    } else {
+      // Return to radio button value; Hide custom input
+      resetCustomTipInput();
+    }
   });
 });
 
-customTip.addEventListener('click', () => {
+// If custom tip exists, get tip % value
+customTip.addEventListener('change', () => {
   activateResetBtn();
-
-  // Remove radio button value
-  if (radioBtnTips.value) {
-    uncheckRadioBtn();
-  }
-
   tipPercentage = customTip.value;
 });
 
 // Reset form
 resetBtn.addEventListener('click', () => {
   tipCalcForm.reset();
+  resetCustomTipInput();
+  tipPercentage = 0;
   resetBtn.setAttribute('disabled', '');
 });
