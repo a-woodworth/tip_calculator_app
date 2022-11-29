@@ -111,6 +111,7 @@
   &:last-child label {
     background-color: $bg-color-tertiary;
     color: $text-color-secondary;
+    margin-inline: 1px;
     z-index: 0;
   }
 
@@ -158,6 +159,8 @@
 
 .radio-input__custom {
   margin: 0;
+  min-height: 48px;
+  padding: 0 1rem 0 0;
   position: absolute;
   top: 50%;
   left: 50%;
