@@ -265,7 +265,7 @@ a:focus {
 .radio-input__custom {
   margin: 0;
   position: absolute;
-  top: 0;
+  bottom: 0;
   width: 100%;
   z-index: 1;
 }
@@ -291,7 +291,6 @@ input[type=radio]:checked + label {
 }
 input[type=radio]:checked + label.custom-tip {
   opacity: 0;
-  position: absolute;
 }
 input[type=radio]:focus + label, input[type=radio]:focus-within + label {
   outline: auto 2px Highlight;
