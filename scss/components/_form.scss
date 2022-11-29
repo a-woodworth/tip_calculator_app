@@ -124,6 +124,10 @@
     padding: 6px 0;
     position: relative;
   }
+
+  // label.custom-tip {
+  //   padding: 0;
+  // }
 }
 
 .form__input,
@@ -187,6 +191,10 @@ input[type="radio"] {
   &:checked + label {
     background-color: $accent-color;
     color: $bg-color-secondary;
+  }
+
+  &:checked + label.custom-tip {
+    padding: 0;
   }
 
   &:focus + label,
