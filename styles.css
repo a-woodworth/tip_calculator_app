@@ -226,8 +226,8 @@ a:focus {
   background-color: hsl(183, 100%, 15%);
   display: grid;
   grid-template-columns: auto;
+  min-height: 3rem;
   place-items: center;
-  padding: 6px 0;
   position: relative;
 }
 
@@ -265,7 +265,10 @@ a:focus {
 .radio-input__custom {
   margin: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   bottom: 0;
+  right: 0;
   width: 100%;
   z-index: 1;
 }
@@ -290,7 +293,7 @@ input[type=radio]:checked + label {
   color: hsl(183, 100%, 15%);
 }
 input[type=radio]:checked + label.custom-tip {
-  opacity: 0;
+  position: absolute;
 }
 input[type=radio]:focus + label, input[type=radio]:focus-within + label {
   outline: auto 2px Highlight;
