@@ -124,10 +124,6 @@
     padding: 6px 0;
     position: relative;
   }
-
-  // label.custom-tip {
-  //   padding: 0;
-  // }
 }
 
 .form__input,
@@ -164,9 +160,6 @@
   margin: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   z-index: 1;
 
@@ -194,7 +187,8 @@ input[type="radio"] {
   }
 
   &:checked + label.custom-tip {
-    padding: 0;
+    opacity: 0;
+    position: absolute;
   }
 
   &:focus + label,
