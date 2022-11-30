@@ -138,9 +138,7 @@ a:focus {
 }
 
 .form__radio-title {
-  margin-bottom: 1rem;
-  padding: 0;
-  width: 100%;
+  margin-bottom: 0;
 }
 
 @media (min-width: 57.5rem) {
@@ -156,27 +154,23 @@ a:focus {
 }
 
 .bill__total,
-.form__radio-title,
+.tip__percent,
 .number__people {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 6px;
 }
 .bill__total span:first-child,
-.form__radio-title span:first-child,
+.tip__percent span:first-child,
 .number__people span:first-child {
   align-self: flex-start;
 }
 .bill__total .form__error-message,
-.form__radio-title .form__error-message,
+.tip__percent .form__error-message,
 .number__people .form__error-message {
   align-self: flex-end;
   color: hsl(13, 70%, 47%);
-}
-
-.bill__total,
-.number__people {
-  margin-bottom: 6px;
 }
 
 .bill__total {
@@ -186,6 +180,10 @@ a:focus {
   .bill__total {
     padding-top: 0.8125rem;
   }
+}
+
+.tip__percent {
+  margin-bottom: 1rem;
 }
 
 #bill,

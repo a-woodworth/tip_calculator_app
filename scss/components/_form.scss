@@ -33,9 +33,7 @@
 }
 
 .form__radio-title {
-  margin-bottom: 1rem;
-  padding: 0;
-  width: 100%;
+  margin-bottom: 0;
 }
 
 .input-group__bill {
@@ -51,11 +49,12 @@
 }
 
 .bill__total,
-.form__radio-title,
+.tip__percent,
 .number__people {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 6px;
 
   span:first-child {
     align-self: flex-start;
@@ -67,17 +66,16 @@
   }
 }
 
-.bill__total,
-.number__people {
-  margin-bottom: 6px;
-}
-
 .bill__total {
   padding-top: 2rem;
 
   @media #{$brkpoint-md} {
     padding-top: 0.8125rem;
   }
+}
+
+.tip__percent {
+  margin-bottom: 1rem;
 }
 
 // Input Field Image Styles
