@@ -138,7 +138,7 @@ a:focus {
 }
 
 .form__radio-title {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 57.5rem) {
@@ -183,7 +183,8 @@ a:focus {
 }
 
 .tip__percent {
-  margin-bottom: 1rem;
+  margin-top: -6px;
+  justify-content: flex-end;
 }
 
 #bill,
@@ -297,6 +298,7 @@ input[type=radio]:checked + label {
 }
 input[type=radio]:checked + label.custom-tip {
   position: absolute;
+  width: 100%;
 }
 input[type=radio]:focus + label, input[type=radio]:focus-within + label {
   outline: auto 2px Highlight;

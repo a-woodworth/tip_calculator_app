@@ -33,7 +33,7 @@
 }
 
 .form__radio-title {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .input-group__bill {
@@ -75,7 +75,8 @@
 }
 
 .tip__percent {
-  margin-bottom: 1rem;
+  margin-top: -6px;
+  justify-content: flex-end;
 }
 
 // Input Field Image Styles
@@ -192,6 +193,7 @@ input[type="radio"] {
 
   &:checked + label.custom-tip {
     position: absolute;
+    width: 100%;
   }
 
   &:focus + label,
