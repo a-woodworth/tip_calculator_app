@@ -48,7 +48,13 @@
             required>
         </div>
         <fieldset class="form__radio-group">
-          <legend class="form__radio-title">Select Tip %</legend>
+          <legend class="form__radio-title">
+            <span>Select Tip %</span>
+            <span class="form__error-message not-visible"
+              id="tip-input-error">
+              Can't be negative
+            </span>
+          </legend>
           <div class="radio-input__container">
             <div class="radio-btn">
               <input 

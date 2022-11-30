@@ -34,6 +34,8 @@
 
 .form__radio-title {
   margin-bottom: 1rem;
+  padding: 0;
+  width: 100%;
 }
 
 .input-group__bill {
@@ -49,11 +51,11 @@
 }
 
 .bill__total,
+.form__radio-title,
 .number__people {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 6px;
 
   span:first-child {
     align-self: flex-start;
@@ -63,6 +65,11 @@
     align-self: flex-end;
     color: $error-color;
   }
+}
+
+.bill__total,
+.number__people {
+  margin-bottom: 6px;
 }
 
 .bill__total {
