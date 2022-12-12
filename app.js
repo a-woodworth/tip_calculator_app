@@ -47,6 +47,22 @@ function removeError(message) {
   message.classList.add('not-visible');
 }
 
+function clearErrorsOnReset() {
+  const visibleErrorMessages = document.querySelectorAll("span[id*='input-error']");
+  const invalidInputs = document.querySelectorAll('.invalid');
+
+  visibleErrorMessages.forEach((error) => {
+    error.classList.remove('visible');
+    error.classList.add('not-visible');
+    error.textContent = '';
+  });
+
+  invalidInputs.forEach((input) => {
+    input.classList.remove('invalid');
+    input.setAttribute('aria-invalid', false);
+  });
+}
+
 function getErrorMessage(input) {
   const validity = input.validity;
 
@@ -128,6 +144,7 @@ resetBtn.addEventListener('click', () => {
   tipCalcForm.reset();
   resetCustomTipInput();
   tipPercentage = 0;
+  clearErrorsOnReset();
   resetBtn.setAttribute('disabled', '');
 });
 
