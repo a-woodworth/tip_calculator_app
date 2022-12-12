@@ -10,6 +10,14 @@ let billTotal = 0;
 let tipPercentage = 0;
 let peopleTotal = 0;
 
+// Custom error messages
+const errorMessages = {
+  badInputError: `Enter a number`,
+  decimalError: `Two decimal spaces only`,
+  maxValueError: `Max value = `,
+  minValueError: `Min value = `,
+  zeroValueError: `Can't be zero`,
+}
 
 function activateResetBtn() {
   resetBtn.removeAttribute('disabled');
@@ -29,82 +37,90 @@ function resetCustomTipInput() {
   customTip.value = '';
 }
 
+function showError(message) {
+  message.classList.remove('not-visible');
+  message.classList.add('visible');
+}
+
+function removeError(message) {
+  message.classList.remove('visible');
+  message.classList.add('not-visible');
+}
+
+function getErrorMessage(input) {
+  const validity = input.validity;
+
+  // Can't be letters or blank
+  if ( validity.badInput || validity.valueMissing ) {
+    return `${errorMessages.badInputError}`;
+  }
+  // Can't be 0
+  if ( Number(input.value) === 0 ) {
+    return `${errorMessages.zeroValueError}`;
+  }
+  // Can't be less than min value
+  if ( validity.rangeUnderflow ) {
+    return `${errorMessages.minValueError}${input.getAttribute('min')}`;
+  }
+  // Can't exceed max value
+  if ( validity.rangeOverflow ) {
+     return `${errorMessages.maxValueError}${input.getAttribute('max')}`;
+  }
+  // Can't have extra decimal places -- billAmount only
+  if ( validity.stepMismatch ) {
+    return `${errorMessages.decimalError}`;
+  }
+}
+
+// Format split to US dollars
 function numberToCurrency(amount) {
   const valueAsDollars = {style: 'currency', currency: 'USD', maximumFractionDigits: 2}
   const numberFormat = new Intl.NumberFormat('en-US', valueAsDollars);
   return numberFormat.format(amount);
 }
 
-function displayInputError(message, input) {
-  message.classList.remove('not-visible');
-  input.classList.add('invalid');
-  input.setAttribute('aria-invalid', true);
-  input.setAttribute('aria-live', 'polite');
-}
 
-function removeInputError(message, input) {
-  message.classList.add('visible');
-  input.classList.remove('invalid');
-  input.setAttribute('aria-invalid', false);
-  input.removeAttribute('aria-live', 'polite');
-}
-
-function showBillInputErrorMessage() {
-  const billErrorMessage = document.querySelector('.bill__total .form__error-message');
-  const dollarAmount = billAmount.value;
-
-  // Bill can't be less than 0 
-  if ( dollarAmount < 0 ) {
-    billErrorMessage.innerText = `Can't be negative`;
-  }
-  // Bill can't be letters or blank   
-  if ( dollarAmount === NaN || dollarAmount === '' ) {
-    billErrorMessage.innerText = `Enter a number`;
-  }
-  // Bill can't be zero
-  if ( dollarAmount === '0.00' ) {
-    billErrorMessage.innerText = `Can't be zero`;
-  } 
-  // Bill can't exceed max value 
-  if ( dollarAmount >= '100000.00' ) {
-    billErrorMessage.innerText = `Error: value too large`;
-  }
-
-  displayInputError(billErrorMessage, billAmount); 
-}
-
-// Enable button so form can be reset form
 [billAmount, numberOfPeople].forEach(inputField => {
-  inputField.addEventListener('click', () => {
+  inputField.addEventListener('click', (e) => {
+    // Enable button so bill and people inputs can be reset
     activateResetBtn();
   });
-});
 
-// Format billAmount so only 2 decimal places displayed after input entered
-billAmount.addEventListener('change', e => {
-  e.currentTarget.value = parseFloat(e.currentTarget.value).toFixed(2);
-});
+  inputField.addEventListener('change', (e) => {
+    // Convert input values
+    const billAmountInput = Number(billAmount.value);
+    const numberOfPeopleInput = Number(numberOfPeople.value);
+
+    billTotal = billAmountInput;
+    peopleTotal = numberOfPeopleInput;
+  })
+}); 
 
 // Get tip % from radio button
 radioBtnTips.forEach(radioBtn => {
   radioBtn.addEventListener('change', () => {
+    const radioBtnTipInput = radioBtn.value;
+
     activateResetBtn();
-    tipPercentage = radioBtn.value;
 
     // If custom tip selected, show input for custom % value
-    if (tipPercentage === '') { 
+    if (radioBtnTipInput === '') { 
       showCustomTipInput();
+      tipPercentage = 0;
     } else {
-      // Return to radio button value; Hide custom input
+      // Hide custom input; Return to radio button value
       resetCustomTipInput();
+      tipPercentage = Number(radioBtnTipInput);
+      tipPercentage = tipPercentage / 100;
     }
   });
 });
 
 // If custom tip exists, get tip % value
 customTip.addEventListener('change', () => {
-  activateResetBtn();
-  tipPercentage = customTip.value;
+  const customTipInput = Number(customTip.value);
+  tipPercentage = customTipInput;
+  tipPercentage = tipPercentage / 100;
 });
 
 // Reset form
@@ -114,3 +130,41 @@ resetBtn.addEventListener('click', () => {
   tipPercentage = 0;
   resetBtn.setAttribute('disabled', '');
 });
+
+// Validate Inputs
+function validateInputs(e) {
+  const input = e.target;
+  const inputID = e.target.id;
+  const errorMessageSpan = document.getElementById(`${inputID}-input-error`);
+
+  const isValid = e.target.checkValidity();
+
+  if (!isValid) {
+    const message = getErrorMessage(input);
+    input.classList.add('invalid');
+    input.setAttribute('aria-invalid', true);
+    showError(errorMessageSpan);
+    errorMessageSpan.textContent = message || input.validationMessage;
+  } 
+  else {
+    input.classList.remove('invalid');
+    input.setAttribute('aria-invalid', false);
+    removeError(errorMessageSpan);
+    errorMessageSpan.textContent = '';
+  }
+}
+
+// Calculate Split
+function calculateTip(e) {
+  // Get numbers from inputs, including custom tip if selected
+  const inputs = [...document.querySelectorAll('input[type="number"]')];
+  
+  inputs.forEach((input) => {
+    input.addEventListener('blur', (e) => {
+      validateInputs(e);
+    });
+  });
+}
+
+tipCalcForm.addEventListener('click', calculateTip);
+tipCalcForm.addEventListener('input', calculateTip);

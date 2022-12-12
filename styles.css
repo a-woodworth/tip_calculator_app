@@ -165,6 +165,7 @@ a:focus {
 .tip__percent span:first-child,
 .number__people span:first-child {
   align-self: flex-start;
+  padding-right: 1rem;
 }
 .bill__total .form__error-message,
 .tip__percent .form__error-message,

@@ -29,21 +29,19 @@
           <label for="bill" class="bill__total">
             <span>Bill</span>
             <span class="form__error-message not-visible" 
-              id="bill-input-error">
-              Can't be zero
-            </span>
+              id="bill-input-error"></span>
           </label>
           <input 
             class="form__input"
             type="number"
             id="bill"
             name="bill"
-            min="0.00"
-            max="100000.00"
+            min="1.00"
+            max="10000.00"
             step="0.01"
             placeholder="0"
             aria-invalid="false"
-            aria-label="Enter bill total"
+            aria-describedby="bill-input-error"
             value=""
             required>
         </div>
@@ -51,8 +49,8 @@
           <legend class="form__radio-title">Select Tip %</legend>
           <div class="tip__percent">
             <span class="form__error-message not-visible"
-              id="tip-input-error">
-              Can't be negative
+              id="customTip-input-error">
+              Enter custom tip percentage
             </span>
           </div>
           <div class="radio-input__container">
@@ -113,7 +111,7 @@
                 step="1"
                 value=""
                 placeholder="0"
-                aria-label="Enter custom tip percentage">
+                aria-describedby="customTip-input-error">
             </div>
           </div>        
         </fieldset>
@@ -121,9 +119,7 @@
           <label for="people" class="number__people">
             <span>Number of People</span>
             <span class="form__error-message not-visible"
-              id="people-input-error">
-              Can't be zero
-            </span>
+              id="people-input-error"></span>
           </label>
           <input 
             class="form__input"
@@ -135,7 +131,7 @@
             step="1" 
             placeholder="0"
             aria-invalid="false"
-            aria-label="Enter how many people you want to split bill with"
+            aria-describedby="people-input-error"
             required>
         </div>
         <div class="input-group__container">
