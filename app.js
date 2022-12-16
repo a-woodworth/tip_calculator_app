@@ -3,12 +3,10 @@ const billAmount = tipCalcForm.elements.bill;
 const radioBtnTips = tipCalcForm.elements.tip;
 const customTip = tipCalcForm.elements.customTip;
 const numberOfPeople = tipCalcForm.elements.people;
-const tipAmountText = tipCalcForm.elements.tipAmount;
-const totalAmountText = tipCalcForm.elements.total;
+const tipAmount = tipCalcForm.elements.tipAmount;
+const totalAmount = tipCalcForm.elements.total;
 const resetBtn = tipCalcForm.elements.resetButton;
-let billTotal = 0;
-let tipPercentage = 0;
-let peopleTotal = 0;
+let  { billTotal, tipPercentage, peopleTotal } = 0;
 
 // Custom error messages
 const errorMessages = {
@@ -37,32 +35,6 @@ function resetCustomTipInput() {
   customTip.value = '';
 }
 
-function showError(message) {
-  message.classList.remove('not-visible');
-  message.classList.add('visible');
-}
-
-function removeError(message) {
-  message.classList.remove('visible');
-  message.classList.add('not-visible');
-}
-
-function clearErrorsOnReset() {
-  const visibleErrorMessages = document.querySelectorAll("span[id*='input-error']");
-  const invalidInputs = document.querySelectorAll('.invalid');
-
-  visibleErrorMessages.forEach((error) => {
-    error.classList.remove('visible');
-    error.classList.add('not-visible');
-    error.textContent = '';
-  });
-
-  invalidInputs.forEach((input) => {
-    input.classList.remove('invalid');
-    input.setAttribute('aria-invalid', false);
-  });
-}
-
 function getErrorMessage(input) {
   const validity = input.validity;
 
@@ -88,6 +60,55 @@ function getErrorMessage(input) {
   }
 }
 
+function clearErrorsOnReset() {
+  const activeErrorMessages = document.querySelectorAll('.active');
+  const invalidInputs = document.querySelectorAll('.invalid');
+
+  // Remove error message spans and text
+  activeErrorMessages.forEach((error) => {
+    error.classList.remove('active', 'visible');
+    error.classList.add('not-visible');
+    error.textContent = '';
+  });
+  // Remove input error styles and reset aria
+  invalidInputs.forEach((input) => {
+    input.classList.remove('invalid');
+    input.setAttribute('aria-invalid', false);
+    input.removeAttribute('aria-live', 'polite');
+  });
+}
+
+function showInputError(input) {
+  const error = document.getElementById(input.id);
+  const errorMessageSpan = document.getElementById(`${input.id}-input-error`);
+
+  if ( error.validity.valid === false ) {
+    const message = getErrorMessage(input);
+    error.classList.add('invalid');
+    error.setAttribute('aria-invalid', true);
+    error.setAttribute('aria-live', 'polite');
+
+    // Add class to show active error messages
+    errorMessageSpan.classList.add('active', 'visible');
+    errorMessageSpan.classList.remove('not-visible');
+    errorMessageSpan.textContent = message || input.validationMessage;
+  }  
+}
+
+function removeInputError(input) {
+  const error = document.getElementById(input.id);
+  const errorMessageSpan = document.getElementById(`${input.id}-input-error`);
+
+  if ( error.validity.valid && error.classList.contains('invalid') ) {
+    error.classList.remove('invalid');
+    error.setAttribute('aria-invalid', false);
+    error.removeAttribute('aria-live', 'polite');
+    errorMessageSpan.classList.remove('active', 'visible');
+    errorMessageSpan.classList.add('not-visible');
+    errorMessageSpan.textContent = '';
+  }
+}
+
 // Format split to US dollars
 function numberToCurrency(amount) {
   const valueAsDollars = {style: 'currency', currency: 'USD', maximumFractionDigits: 2}
@@ -95,21 +116,56 @@ function numberToCurrency(amount) {
   return numberFormat.format(amount);
 }
 
+function validateInputs() {
+  // Get numbers from inputs, including custom tip if selected
+  const inputFields = [billAmount, numberOfPeople, customTip];
+
+  inputFields.forEach(input => {
+    // Check for invalid number and show error
+    input.addEventListener('invalid', () => {
+      showInputError(input);
+      const message = getErrorMessage(input);
+      showInputError(input);
+    });
+
+    input.addEventListener('blur', () => {
+      input.checkValidity();
+    });
+
+    input.addEventListener('input', () => {
+      const valid = input.checkValidity();
+
+      if (valid) {
+        removeInputError(input);
+      }
+    });
+  });
+}
+
+function calculateTotals(bill, tip, people) {
+  const initialAmount = bill;
+  const totalTip = (initialAmount * tip);
+  const totalSplitTip = (totalTip / people);
+  const totalSplitBill = (initialAmount + totalTip) / people;
+
+  tipAmount.value = numberToCurrency(totalSplitTip);
+  totalAmount.value = numberToCurrency(totalSplitBill);
+}
+
+// Reset form
+resetBtn.addEventListener('click', () => {
+  tipCalcForm.reset();
+  resetCustomTipInput();
+  clearErrorsOnReset();
+  billTotal = 0;
+  tipPercentage = 0;
+  peopleTotal = 0;
+  resetBtn.setAttribute('disabled', '');
+});
 
 [billAmount, numberOfPeople].forEach(inputField => {
-  inputField.addEventListener('click', (e) => {
-    // Enable button so bill and people inputs can be reset
-    activateResetBtn();
-  });
-
-  inputField.addEventListener('change', (e) => {
-    // Convert input values
-    const billAmountInput = Number(billAmount.value);
-    const numberOfPeopleInput = Number(numberOfPeople.value);
-
-    billTotal = billAmountInput;
-    peopleTotal = numberOfPeopleInput;
-  })
+  inputField.addEventListener('click', activateResetBtn);
+  inputField.addEventListener('keyup', activateResetBtn);
 }); 
 
 // Get tip % from radio button
@@ -118,9 +174,8 @@ radioBtnTips.forEach(radioBtn => {
     const radioBtnTipInput = radioBtn.value;
 
     activateResetBtn();
-
     // If custom tip selected, show input for custom % value
-    if (radioBtnTipInput === '') { 
+    if ( radioBtnTipInput === '' ) { 
       showCustomTipInput();
       tipPercentage = 0;
     } else {
@@ -139,49 +194,19 @@ customTip.addEventListener('change', () => {
   tipPercentage = tipPercentage / 100;
 });
 
-// Reset form
-resetBtn.addEventListener('click', () => {
-  tipCalcForm.reset();
-  resetCustomTipInput();
-  tipPercentage = 0;
-  clearErrorsOnReset();
-  resetBtn.setAttribute('disabled', '');
+tipCalcForm.querySelectorAll('input').forEach(input => {
+  input.addEventListener('change', () => {
+    const billAmountInput = Number(billAmount.value);
+    const numberOfPeopleInput = Number(numberOfPeople.value);
+    const currentTipInput = tipPercentage;
+
+    billTotal = billAmountInput;
+    peopleTotal = numberOfPeopleInput;
+
+    if ( billTotal >= 1 && peopleTotal >= 2 ) {
+      calculateTotals(billTotal, currentTipInput, peopleTotal);
+    }
+  });
 });
 
-// Validate Inputs
-function validateInputs(e) {
-  const input = e.target;
-  const inputID = e.target.id;
-  const errorMessageSpan = document.getElementById(`${inputID}-input-error`);
-
-  const isValid = e.target.checkValidity();
-
-  if (!isValid) {
-    const message = getErrorMessage(input);
-    input.classList.add('invalid');
-    input.setAttribute('aria-invalid', true);
-    showError(errorMessageSpan);
-    errorMessageSpan.textContent = message || input.validationMessage;
-  } 
-  else {
-    input.classList.remove('invalid');
-    input.setAttribute('aria-invalid', false);
-    removeError(errorMessageSpan);
-    errorMessageSpan.textContent = '';
-  }
-}
-
-// Calculate Split
-function calculateTip(e) {
-  // Get numbers from inputs, including custom tip if selected
-  const inputs = [...document.querySelectorAll('input[type="number"]')];
-  
-  inputs.forEach((input) => {
-    input.addEventListener('blur', (e) => {
-      validateInputs(e);
-    });
-  });
-}
-
-tipCalcForm.addEventListener('click', calculateTip);
-tipCalcForm.addEventListener('input', calculateTip);
+validateInputs();
