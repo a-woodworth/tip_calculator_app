@@ -6,16 +6,7 @@ const numberOfPeople = tipCalcForm.elements.people;
 const tipAmount = tipCalcForm.elements.tipAmount;
 const totalAmount = tipCalcForm.elements.total;
 const resetBtn = tipCalcForm.elements.resetButton;
-let  { billTotal, tipPercentage, peopleTotal } = 0;
-
-// Custom error messages
-const errorMessages = {
-  badInputError: `Enter a number`,
-  decimalError: `Two decimal spaces only`,
-  maxValueError: `Max value = `,
-  minValueError: `Min value = `,
-  zeroValueError: `Can't be zero`,
-}
+let { billTotal, tipPercentage, peopleTotal } = 0;
 
 function activateResetBtn() {
   resetBtn.removeAttribute('disabled');
@@ -35,80 +26,6 @@ function resetCustomTipInput() {
   customTip.value = '';
 }
 
-function getErrorMessage(input) {
-  const validity = input.validity;
-
-  // Can't be letters or blank
-  if ( validity.badInput || validity.valueMissing ) {
-    return `${errorMessages.badInputError}`;
-  }
-  // Can't be 0
-  if ( Number(input.value) === 0 ) {
-    return `${errorMessages.zeroValueError}`;
-  }
-  // Can't be less than min value
-  if ( validity.rangeUnderflow ) {
-    return `${errorMessages.minValueError}${input.getAttribute('min')}`;
-  }
-  // Can't exceed max value
-  if ( validity.rangeOverflow ) {
-     return `${errorMessages.maxValueError}${input.getAttribute('max')}`;
-  }
-  // Can't have extra decimal places -- billAmount only
-  if ( validity.stepMismatch ) {
-    return `${errorMessages.decimalError}`;
-  }
-}
-
-function clearErrorsOnReset() {
-  const activeErrorMessages = document.querySelectorAll('.active');
-  const invalidInputs = document.querySelectorAll('.invalid');
-
-  // Remove error message spans and text
-  activeErrorMessages.forEach((error) => {
-    error.classList.remove('active', 'visible');
-    error.classList.add('not-visible');
-    error.textContent = '';
-  });
-  // Remove input error styles and reset aria
-  invalidInputs.forEach((input) => {
-    input.classList.remove('invalid');
-    input.setAttribute('aria-invalid', false);
-    input.removeAttribute('aria-live', 'polite');
-  });
-}
-
-function showInputError(input) {
-  const error = document.getElementById(input.id);
-  const errorMessageSpan = document.getElementById(`${input.id}-input-error`);
-
-  if ( error.validity.valid === false ) {
-    const message = getErrorMessage(input);
-    error.classList.add('invalid');
-    error.setAttribute('aria-invalid', true);
-    error.setAttribute('aria-live', 'polite');
-
-    // Add class to show active error messages
-    errorMessageSpan.classList.add('active', 'visible');
-    errorMessageSpan.classList.remove('not-visible');
-    errorMessageSpan.textContent = message || input.validationMessage;
-  }  
-}
-
-function removeInputError(input) {
-  const error = document.getElementById(input.id);
-  const errorMessageSpan = document.getElementById(`${input.id}-input-error`);
-
-  if ( error.validity.valid && error.classList.contains('invalid') ) {
-    error.classList.remove('invalid');
-    error.setAttribute('aria-invalid', false);
-    error.removeAttribute('aria-live', 'polite');
-    errorMessageSpan.classList.remove('active', 'visible');
-    errorMessageSpan.classList.add('not-visible');
-    errorMessageSpan.textContent = '';
-  }
-}
-
 // Format split to US dollars
 function numberToCurrency(amount) {
   const valueAsDollars = {style: 'currency', currency: 'USD', maximumFractionDigits: 2}
@@ -123,7 +40,6 @@ function validateInputs() {
   inputFields.forEach(input => {
     // Check for invalid number and show error
     input.addEventListener('invalid', () => {
-      showInputError(input);
       const message = getErrorMessage(input);
       showInputError(input);
     });
@@ -143,10 +59,11 @@ function validateInputs() {
 }
 
 function calculateTotals(bill, tip, people) {
-  const initialAmount = bill;
-  const totalTip = (initialAmount * tip);
-  const totalSplitTip = (totalTip / people);
-  const totalSplitBill = (initialAmount + totalTip) / people;
+  const initialAmount = Math.round(bill * 100);
+  const totalTip = Math.round(initialAmount * tip);
+  const totalSplitTip = Math.round(totalTip / people) / 100;
+  const totalBill = (initialAmount + totalTip);
+  const totalSplitBill = Math.round(totalBill / people) / 100;
 
   tipAmount.value = numberToCurrency(totalSplitTip);
   totalAmount.value = numberToCurrency(totalSplitBill);
@@ -163,6 +80,7 @@ resetBtn.addEventListener('click', () => {
   resetBtn.setAttribute('disabled', '');
 });
 
+// Activate reset button
 [billAmount, numberOfPeople].forEach(inputField => {
   inputField.addEventListener('click', activateResetBtn);
   inputField.addEventListener('keyup', activateResetBtn);
@@ -181,24 +99,23 @@ radioBtnTips.forEach(radioBtn => {
     } else {
       // Hide custom input; Return to radio button value
       resetCustomTipInput();
-      tipPercentage = Number(radioBtnTipInput);
-      tipPercentage = tipPercentage / 100;
+      tipPercentage = Number(radioBtnTipInput) / 100;
     }
   });
 });
 
 // If custom tip exists, get tip % value
 customTip.addEventListener('change', () => {
-  const customTipInput = Number(customTip.value);
+  const customTipInput = Number(customTip.value) / 100;
   tipPercentage = customTipInput;
-  tipPercentage = tipPercentage / 100;
 });
 
+// Watch for input and return totals; tip can be 0, not required to split bill
 tipCalcForm.querySelectorAll('input').forEach(input => {
   input.addEventListener('change', () => {
     const billAmountInput = Number(billAmount.value);
     const numberOfPeopleInput = Number(numberOfPeople.value);
-    const currentTipInput = tipPercentage;
+    const currentTipInput = tipPercentage; // Get radio btn % or custom %
 
     billTotal = billAmountInput;
     peopleTotal = numberOfPeopleInput;
