@@ -61,8 +61,8 @@ function validateInputs() {
 function calculateTotals(bill, tip, people) {
   const initialAmount = Math.round(bill * 100);
   const totalTip = Math.round(initialAmount * tip);
-  const totalSplitTip = Math.round(totalTip / people) / 100;
-  const totalBill = (initialAmount + totalTip);
+  const totalSplitTip = Math.floor(totalTip / people) / 100;
+  const totalBill = initialAmount + totalTip;
   const totalSplitBill = Math.round(totalBill / people) / 100;
 
   tipAmount.value = numberToCurrency(totalSplitTip);
