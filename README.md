@@ -32,7 +32,7 @@ Users should be able to:
 ![Mobile Sceenshot](/screenshots/mobile-screenshot-375px.png)
 
 ### Links
-- Solution URL: [Solution]()
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/tip-calculator-app-7Nt5e-ApDQ)
 - Live Site URL: [Live Site](https://a-woodworth.github.io/tip_calculator_app/)
 
 ### Built with
