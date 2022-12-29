@@ -6,7 +6,9 @@ const numberOfPeople = tipCalcForm.elements.people;
 const tipAmount = tipCalcForm.elements.tipAmount;
 const totalAmount = tipCalcForm.elements.total;
 const resetBtn = tipCalcForm.elements.resetButton;
-let { billTotal, tipPercentage, peopleTotal } = 0;
+let billTotal = 0;
+let tipPercentage = 0;
+let peopleTotal = 0;
 
 function activateResetBtn() {
   resetBtn.removeAttribute('disabled');
